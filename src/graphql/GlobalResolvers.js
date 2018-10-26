@@ -1,6 +1,7 @@
 // @flow
 import userResolvers from './user/UserResolvers';
 import postResolvers from './posts/PostResolvers';
+import productResolvers from './products/ProductResolvers';
 
 type ResolversType = {
   Query: Object,
@@ -14,6 +15,7 @@ const globalResolvers: ResolversType = {
     user: userResolvers.user,
     post: postResolvers.post,
     posts: postResolvers.posts,
+    products: productResolvers.products,
   },
   Mutation: {
     userAdd: userResolvers.userAdd,

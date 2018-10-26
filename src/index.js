@@ -3,7 +3,7 @@ import { ApolloServer } from 'apollo-server';
 import globalResolvers from './graphql/GlobalResolvers';
 import globalQuery from './graphql/TypeDefinitions';
 import { connectDatabase } from './database';
-import { getUser } from './graphql/auth';
+// import { getUser } from './graphql/auth';
 
 (async () => {
   try {
@@ -16,15 +16,6 @@ import { getUser } from './graphql/auth';
   const server = new ApolloServer({
     resolvers: globalResolvers,
     typeDefs: globalQuery,
-    // user authentication
-    context: async ({ req }) => {
-      const token = req.headers.authorization ? req.headers.authorization : '';
-      const { user } = await getUser(token);
-      return {
-        user,
-      };
-    },
-    tracing: true,
   });
   const graphqlPort = 4000;
   server.setGraphQLPath('graphql');

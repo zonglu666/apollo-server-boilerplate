@@ -2,6 +2,7 @@
 import { gql } from 'apollo-server';
 import userTypes from './user/UserTypes';
 import postTypes from './posts/PostTypes';
+import productTypes from './products/productTypes';
 import type { UserType } from './user/UserTypes';
 
 export type QueryTypeDef = {
@@ -21,6 +22,7 @@ const queryTypes: string = gql`
     user(id: ID!): User
     posts(search: String, first: Int!, after: Int): PostConnection
     post(id: ID!): Post
+    products: ProductConnection
   }
 
   type Mutation {
@@ -30,6 +32,6 @@ const queryTypes: string = gql`
   }
 `;
 
-const globalQuery: Array<string> = [postTypes, userTypes, queryTypes];
+const globalQuery: Array<string> = [postTypes, userTypes, productTypes, queryTypes];
 
 export default globalQuery;
