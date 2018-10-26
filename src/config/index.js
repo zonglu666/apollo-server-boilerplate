@@ -10,7 +10,7 @@ dotenvSafe.load({
 });
 
 // Database Settings
-export const MONGO_URI = process.env.MONGO || 'mongodb://localhost/myserver';
+export const MONGO_URI = process.env.MONGO || 'mongodb://localhost/product-management';
 
 export const jwtSecret = process.env.SECRET || 'awesome_secret';
 

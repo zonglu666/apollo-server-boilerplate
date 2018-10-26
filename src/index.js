@@ -8,7 +8,7 @@ import { getUser } from './graphql/auth';
 (async () => {
   try {
     const info = await connectDatabase();
-    console.log(`Connected to mongodb 🍃 at ${info.host}:${info.port}/${info.name}`);
+    console.log(`Connected to mongodb at ${info.host}:${info.port}/${info.name}`);
   } catch (error) {
     console.error('Unable to connect to database');
     process.exit(1);
@@ -26,10 +26,9 @@ import { getUser } from './graphql/auth';
     },
     tracing: true,
   });
-  const graphqlPort = 3000;
+  const graphqlPort = 4000;
   server.setGraphQLPath('graphql');
   server.listen(graphqlPort).then(({ url }) => {
-    console.log(`🚀 Apollo server ready on ${url}`);
-    console.log('⚡️ Playground exposed on /graphql');
+    console.log(` Apollo server ready on ${url}`);
   });
 })();
